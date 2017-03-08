@@ -1,0 +1,37 @@
+<body>
+<div>
+<input type="text" placeholder="fullname" id="fullname"/><br/>
+<input type="text" placeholder="mobile number 1" id="mobile1" /><br/>
+<input type="text" placeholder="mobile number 2" id="mobile2"/><br/>
+<input type="text" placeholder="Email" id="email"/><br/>
+<button id="createNewContact">Create New Contact from form</button>
+</div>
+</body>
+<script type="text/javascript">
+$("#createNewContact").click(function(){
+ var name=$("#fullname").val();
+ var mobile1=$("#mobile1").val();
+ var mobile2=$("#mobile2").val();
+ var email=$("#email").val();
+
+ var myNewContact = navigator.contacts.create(
+ {
+ "displayName":name,
+ "name":{
+ "givenName": name,
+ "formatted":name,
+ },
+ "nickname":name,
+ "phoneNumbers":[
+ {"type":"mobile","value":mobile1,"id":0,"pref":false},
+ {"type":"other","value":mobile2,"id":1,"pref":false}
+ ],
+ "emails":[
+ {"type":"home","value":email,"id":0,"pref":false}
+ ]
+ }
+ );
+ myNewContact.save();
+ alert("The contact, " + myNewContact.name.givenName + ", has been created");
+ });
+</script>
