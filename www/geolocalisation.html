@@ -15,9 +15,16 @@
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+		<script src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin="anonymous"></script>
+   		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+   		<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self' gap://ready file://* *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'"/>
+		
+		
+	
 	</head>
 	<body class="homepage">
-		<div id="page-wrapper">
+						<div id="page-wrapper">
 
 			
 			<!-- Nav -->
@@ -73,15 +80,9 @@
 																		<li class="icon fa-comments"><a href="#">8</a></li>
 																	</ul>
 																</header>
-																<a href="#" class="image featured"><img src="images/pic05.jpg" alt="" /></a>
-																<p>
-																	Phasellus quam turpis, feugiat sit amet ornare in, a hendrerit in lectus. Praesent
-																	semper mod quis eget mi. Etiam sed ante risus aliquam erat et volutpat. Praesent a
-																	dapibus velit. Curabitur sed nisi nunc, accumsan vestibulum lectus. Lorem ipsum
-																	dolor sit non aliquet sed, tempor et dolor.  Praesent a dapibus velit. Curabitur
-																	accumsan.
-																</p>
-																<a href="#" class="button">Continue Reading</a>
+
+																<div id="map" style='height: 400px;' longitude="131.044" latitude="-25.363"></div>
+
 															</article>
 
 													</div>
@@ -206,6 +207,117 @@
 			<script src="assets/js/util.js"></script>
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 			<script src="assets/js/main.js"></script>
+			<script src="assets/js/jquery.ui.map.min.js"></script>
+
+
+
+
+    <script>
+	    	// Wait for Cordova to load
+    //
+	$(document).ready(function(){
+
+		if (window.cordova) {
+		    //device
+
+		    var	myDB = $cordovaSQLite.openDB({ name: "mySQLite.db" });
+		}else{
+		    // browser
+		    var	myDB = window.openDatabase("mySQLite.db", '1', 'my', 1024 * 1024 * 100);
+		}
+		
+
+
+    //Create new table
+	var d = function(){
+	    myDB.transaction(function(transaction) {
+	    transaction.executeSql('CREATE TABLE IF NOT EXISTS phonegap_pro (id integer primary key, title text, desc text)', [],
+	        function(tx, result) {
+	            alert("Table created successfully");
+	        }, 
+	        function(error) {
+	              alert("Error occurred while creating the table.");
+	        });
+	    });
+	}
+	
+	});	  			    
+
+	    
+	    // onSuccess Callback
+	    // This method accepts a Position object, which contains the
+	    // current GPS coordinates
+	    //
+	    var onSuccess = function(position) {
+	        alert('Latitude: '          + position.coords.latitude          + '\n' +
+	              'Longitude: '         + position.coords.longitude         + '\n' +
+	              'Altitude: '          + position.coords.altitude          + '\n' +
+	              'Accuracy: '          + position.coords.accuracy          + '\n' +
+	              'Altitude Accuracy: ' + position.coords.altitudeAccuracy  + '\n' +
+	              'Heading: '           + position.coords.heading           + '\n' +
+	              'Speed: '             + position.coords.speed             + '\n' +
+	              'Timestamp: '         + position.timestamp                + '\n');
+	    };
+	
+	    // onError Callback receives a PositionError object
+	    //
+	    function onError(error) {
+	        alert('code: '    + error.code    + '\n' +
+	              'message: ' + error.message + '\n');
+	    }
+	
+      
+		function initMap(position) {
+	      
+	      
+		
+			var divmap = document.getElementById('map');
+	
+	        var myLatLng = {lat: Number(position.coords.latitude), lng: Number(position.coords.longitude)};
+	
+			
+	        // Create a map object and specify the DOM element for display.
+	        var map = new google.maps.Map(divmap, {
+	          center: myLatLng,
+	          scrollwheel: false,
+	          zoom: 8
+	        });
+	
+	        // Create a marker and set its position.
+	        var marker = new google.maps.Marker({
+	          map: map,
+	          position: myLatLng,
+	          title: 'Hello World!'
+	        });
+	      }
+	      
+	      
+	    function currentPosition(){
+        	navigator.geolocation.getCurrentPosition(d, onError);
+	    }
+	    
+	    
+	    function onWatchSuccess(position) {
+	        var element = document.getElementById('geolocation');
+	        element.innerHTML = 'Latitude: '  + position.coords.latitude      + '<br />' +
+	                            'Longitude: ' + position.coords.longitude     + '<br />' +
+	                            '<hr />'      + element.innerHTML;
+	    }
+	
+	
+	
+	    var watchID = navigator.geolocation.watchPosition(onWatchSuccess, onError, { timeout: 3000000 });
+	    
+	   
+		   	    
+	</script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAB_mFktea8oNVMp7uvXzGP4ClLU1STAkc&callback=currentPosition"
+    async defer></script>
+  
+
+
+
+
 
 	</body>
 </html>
