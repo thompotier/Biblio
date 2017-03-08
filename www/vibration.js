@@ -24,5 +24,6 @@ var app = {
 
     vibrate: function() {
       navigator.vibrate(3000);
+      alert("Il est l'heure de prendre ton médicament!");
     }
 };
