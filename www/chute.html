@@ -15,8 +15,11 @@
 			
 			function fonction() {
 				function onSuccess(acceleration) {
-					if (acceleration.x >15) {
-						alert ("CHUTE");
+					if (acceleration.z > 60 || acceleration.x > 60 || acceleration.y > 60) {
+						alert ('Acceleration X: ' + acceleration.x + '\n' +
+				  'Acceleration Y: ' + acceleration.y + '\n' +
+				  'Acceleration Z: ' + acceleration.z + '\n' +
+				  'Timestamp: '      + acceleration.timestamp + '\n');
 					}
 			/*alert('Acceleration X: ' + acceleration.x + '\n' +
 				  'Acceleration Y: ' + acceleration.y + '\n' +
@@ -28,7 +31,7 @@
 				alert('onError!');
 			}
 
-			var options = { frequency: 3000 };  // Update every 3 seconds
+			var options = { frequency: 1 };  // Update every 1 Mseconds
 
 			var watchID = navigator.accelerometer.watchAcceleration(onSuccess, onError, options);
 				
