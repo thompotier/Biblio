@@ -23,6 +23,6 @@ var app = {
     },
 
     vibrate: function() {
-      navigator.notification.vibrate( 1000 );
+      navigator.vibrate(3000);
     }
 };
