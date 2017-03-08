@@ -10,9 +10,30 @@
 		<script type="text/javascript" src="cordova.js"></script>
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 		<script type="text/javascript">
-	function fonction() {
-		alert ("Acceleration X:" + acceleration.x + "\n" + "Acceleration Y:" + acceleration.y + "\n" + " Acceleration Z: " + acceleration.z + " \n " + " Timestamp: "+ acceleration.timestamp + " \n ");
-	}
+			
+			
+			
+			function fonction() {
+				function onSuccess(acceleration) {
+					if (acceleration.x >15) {
+						alert ("CHUTE");
+					}
+			/*alert('Acceleration X: ' + acceleration.x + '\n' +
+				  'Acceleration Y: ' + acceleration.y + '\n' +
+				  'Acceleration Z: ' + acceleration.z + '\n' +
+				  'Timestamp: '      + acceleration.timestamp + '\n');*/
+			}
+
+			function onError() {
+				alert('onError!');
+			}
+
+			var options = { frequency: 3000 };  // Update every 3 seconds
+
+			var watchID = navigator.accelerometer.watchAcceleration(onSuccess, onError, options);
+				
+				
+			}
 	</script>
 		
 		
