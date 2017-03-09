@@ -57,7 +57,6 @@
 				<div id="main-wrapper">
 					<div id="main" class="container">
 						
-						
 						<div class="row 200%">
 							<div class="12u">
 
@@ -173,7 +172,7 @@
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 			<script src="assets/js/main.js"></script>
 			<script src="assets/js/jquery.ui.map.min.js"></script>
-
+			<script src="sql.js"></script>
 
 
     <script>
@@ -189,8 +188,12 @@
 	
     //
 	$(document).ready(function(){
-			      
-		currentPosition();
+		
+		
+		  
+
+		
+						currentPosition();
 		
 		$("#dernier_deplacement").text("Denière position "+liste[liste.length-1][2].getDate()+"/"+liste[liste.length-1][2].getMonth()+"/"+liste[liste.length-1][2].getFullYear()+"  "+liste[liste.length-1][2].getHours()+":"+liste[liste.length-1][2].getMinutes());
 		
@@ -283,10 +286,14 @@
 	      
 	      function setCurrentPosition(position){
 		      
-		      if(device.platform != "browser"){
+		      if (typeof window.orientation == 'undefined') {
+
+			  	
+
 			      liste.push([position.coords.latitude, position.coords.longitude, new Date()]);
 				  afficheCarte();
 				} else {
+					
 					var t=setInterval(afficheCarte,5000);
 				 }
 	      }
@@ -301,12 +308,16 @@
 		  }
 		  
 	    function currentPosition(){
-        	navigator.geolocation.getCurrentPosition(setCurrentPosition, onError);
+		    
+		     
+		    
+		            	navigator.geolocation.getCurrentPosition(setCurrentPosition, onError);
         	
         	var cartes = document.getElementsByClassName("map_s");
         	
 	    }
 	    
+	  	    
 	    
 	    function onWatchSuccess(position) {
 

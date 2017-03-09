@@ -114,4 +114,7 @@
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
     </platform>
+     <plugin name="cordova-sms-plugin" spec="~0.1.11" />
+    <plugin name="cordova-plugin-sms" spec="~1.0.5" />
+    <plugin name="cordova-sqlite-storage" spec="~2.0.2" />
 </widget>
