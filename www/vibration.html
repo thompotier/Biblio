@@ -131,7 +131,7 @@
 	   		$(document).ready(function(){
 	                        app.initialize();
 
-				var liste = [["Rappel : 16h22", false, "Hybupramadol"],["Rappel : 16h30", false, "Coxyxolo"],["Rappel : 15h49", false, "Tinusmalo"]];
+				var liste = [["Rappel : 16h50", false, "Hybupramadol"],["Rappel : 16h30", false, "Coxyxolo"],["Rappel : 15h49", false, "Tinusmalo"]];
 				
 				for(var i=0 ; i<liste.length ; i++){
 					var id = liste[i][2];
@@ -167,8 +167,9 @@
 						if(liste[index][1] == false){
 	
 			            	console.log("ok");
+							app.vibrate();
 			            	app.alerte();
-							/*app.vibrate();*/
+							
 
 			            	liste[index][1] = true;
 			            	index=index+1;
