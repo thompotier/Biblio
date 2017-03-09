@@ -16,70 +16,15 @@
                 <div class="event received">
                   <p>Appareil prêt</p>
 
-				  <label id="label_rappel">Rappel : 11h40</label>
-                 
+                  <button onclick="app.vibrate();app.alerte();">
+                    Activer le rappel
+                  </button>
                 </div>
             </div>
         </div>
-        
-        
-        <div>
-	        
-	          <input id="numberTxt" placeholder="Enter mobile number" value="" type="tel" />
-			<textarea id="messageTxt" placeholder="Enter message"></textarea>
-			<input type="button" onclick="app.sendSms()" value="Send SMS" />
-
-	        
-        </div>
-        <script type="text/javascript" src='vibration.js'></script>
-	    <script src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin="anonymous"></script>
-   		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-   		<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
-   		<script type="text/javascript" charset="utf-8" src="cordova.js"></script>  		
-   		<script>          
-           
-           var app = {
-		    sendSms: function() {
-		        var number = document.getElementById('numberTxt').value;
-		        var message = document.getElementById('messageTxt').value;
-		        console.log("number=" + number + ", message= " + message);
-		
-		        //CONFIGURATION
-		        var options = {
-		            replaceLineBreaks: false, // true to replace \n by a new line, false by default
-		            android: {
-		                intent: 'INTENT'  // send SMS with the native android SMS messaging
-		                //intent: '' // send SMS without open any other app
-		            }
-		        };
-		
-		        var success = function () { alert('Message sent successfully'); };
-		        var error = function (e) { alert('Message Failed:' + e); };
-		        sendSMS(number, message, options, success, error);
-		    }
-		};
-           /* app.initialize();
-            
-            $(document).ready(function(){
-	            
-	           var auj = new Date();
-	           
-	           var label = $("#label_rappel").split("Rappel : ")[0].split("h");
-	           var hour = label[0];
-	           var minute = label[1];
-	           
-	           var date = new Date(auj.getYear() , auj.getMonths() , auj.getDate , hour, minute);
-	           
-	           var t=setInterval(testDate,1000);
-	           
-	            function testDate(){
-	            
-	            	console.log(date);
-            	}
-            });*/
-            
-           
-                     
+        <script type="text/javascript" src="vibration.js"></script>
+        <script type="text/javascript">
+            app.initialize();
         </script>
     </body>
 </html>
