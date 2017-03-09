@@ -23,7 +23,7 @@
 							<input type="text" placeholder="mobile number 1" id="mobile1" /><br/>
 							<input type="text" placeholder="mobile number 2" id="mobile2"/><br/>
 							<input type="text" placeholder="Email" id="email"/><br/>
-							<button id="createNewContact">Creer nouveau contact preferentiel</button>
+							<button id="createNewContact">Creer nouveau contact de confiance</button>
 		<script type="text/javascript">
 $("#createNewContact").click(function(){
  var name=$("#fullname").val();
@@ -49,7 +49,7 @@ $("#createNewContact").click(function(){
  }
  );
  myNewContact.save();
- alert("Le contact préférentiel, " + myNewContact.name.givenName + ", a bien été crée");
+ alert("Le contact de confiance, " + myNewContact.name.givenName + ", a bien été crée");
  });
 		</script>
 						</div>
