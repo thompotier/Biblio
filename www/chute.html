@@ -14,12 +14,11 @@
 			
 			
 			function fonction() {
+				
+				
 				function onSuccess(acceleration) {
 					if (acceleration.z > 60 || acceleration.x > 60 || acceleration.y > 60) {
-						alert ('Acceleration X: ' + acceleration.x + '\n' +
-				  'Acceleration Y: ' + acceleration.y + '\n' +
-				  'Acceleration Z: ' + acceleration.z + '\n' +
-				  'Timestamp: '      + acceleration.timestamp + '\n');
+						alert ('Une chute est detectee, votre contact de confiance en est informe');
 					}
 			/*alert('Acceleration X: ' + acceleration.x + '\n' +
 				  'Acceleration Y: ' + acceleration.y + '\n' +
@@ -28,7 +27,7 @@
 			}
 
 			function onError() {
-				alert('onError!');
+				alert('onError');
 			}
 
 			var options = { frequency: 1 };  // Update every 1 Mseconds
