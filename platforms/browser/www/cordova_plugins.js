@@ -626,6 +626,22 @@ module.exports = [
         "clobbers": [
             "window.SMS"
         ]
+    },
+    {
+        "file": "plugins/cordova-sms-plugin/www/sms.js",
+        "id": "cordova-sms-plugin.Sms",
+        "pluginId": "cordova-sms-plugin",
+        "clobbers": [
+            "window.sms"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-sms/www/SMS.js",
+        "id": "cordova-plugin-sms.SMS",
+        "pluginId": "cordova-plugin-sms",
+        "clobbers": [
+            "window.SMS"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -650,9 +666,14 @@ module.exports.metadata =
     "cordova-plugin-network-information": "1.2.1",
     "cordova-plugin-splashscreen": "3.2.2",
     "cordova-plugin-statusbar": "2.1.3",
+<<<<<<< Updated upstream
     "cordova-plugin-vibration": "2.1.3",
     "cordova-plugin-whitelist": "1.2.2",
     "cordova-sqlite-storage": "2.0.2",
+=======
+    "cordova-plugin-vibration": "2.1.4",
+    "cordova-plugin-whitelist": "1.2.2",
+>>>>>>> Stashed changes
     "cordova-sms-plugin": "0.1.11",
     "cordova-plugin-sms": "1.0.5"
 }
